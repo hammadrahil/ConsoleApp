@@ -43,40 +43,52 @@
 
 //Console.ReadLine();
 
-string fullname = AskForFullName();
-int age = AskForAge();
+using ConsoleApp;
 
-List<string> carlist = new List<string>();
+//string fullname = AskForFullName();
+//int age = AskForAge();
 
-carlist.Add(AskForCarCompany());
-carlist.Add(AskForCarCompany());
-carlist.Add(AskForCarCompany());
+//List<string> carlist = new List<string>();
 
-Console.WriteLine("Your name is " + fullname + " and you are " + age + " years old.");
-Console.WriteLine(carlist[0]);
-Console.WriteLine(carlist[1]);
-Console.WriteLine(carlist[1]);
+//carlist.Add(AskForCarCompany());
+//carlist.Add(AskForCarCompany());
+//carlist.Add(AskForCarCompany());
 
-Console.ReadLine();
+//Console.WriteLine("Your name is " + fullname + " and you are " + age + " years old.");
+//Console.WriteLine(carlist[0]);
+//Console.WriteLine(carlist[1]);
+//Console.WriteLine(carlist[1]);
 
-static string AskForFullName()
-{
-    Console.WriteLine("What is your name?");
-    string fullname = Convert.ToString(Console.ReadLine());
-    return fullname;
-}
+//Console.ReadLine();
 
-static string AskForCarCompany()
-{
-    Console.WriteLine("can you name a car company?");
-    var givenCar = Convert.ToString(Console.ReadLine());
-    return givenCar;
+//static string AskForFullName()
+//{
+//Console.WriteLine("What is your name?");
+//string fullname = Convert.ToString(Console.ReadLine());
+//return fullname;
+//}
 
-}
+//static string AskForCarCompany()
+//{
+//Console.WriteLine("can you name a car company?");
+//var givenCar = Convert.ToString(Console.ReadLine());
+//return givenCar;
+//}
 
-static int AskForAge()
-{
-    Console.WriteLine("What is your age?");
-    int age = Convert.ToInt32(Console.ReadLine());
-    return age;
-}
+//static int AskForAge()
+//{
+//Console.WriteLine("What is your age?");
+//int age = Convert.ToInt32(Console.ReadLine());
+//return age;
+//}
+
+Person person = new Person();
+
+person.AskForFullName();
+person.AskForAge();
+
+person.AskForCarCompany();
+person.AskForCarCompany();
+person.AskForCarCompany();
+
+person.DisplayInfo(); 
