@@ -1,4 +1,6 @@
-﻿//String sometext = "Hello, World!";
+﻿#nullable disable
+
+//String sometext = "Hello, World!";
 
 //List<string> textlist = new List<string>();
 
@@ -15,24 +17,40 @@
 //textlist.Add("I am a software developer.");
 //textlist.Add("I love coding in C#.");
 
-Console.WriteLine("What is your name?");
-string fullname = Convert.ToString(Console.ReadLine());
-Console.WriteLine("What is your age?");
-int age = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine("What is your name?");
+//string fullname = Convert.ToString(Console.ReadLine());
+//Console.WriteLine("What is your age?");
+//int age = Convert.ToInt32(Console.ReadLine());
+
+//List<string> carlist = new List<string>();
+
+//Console.WriteLine("can you name a car company?");
+//var givenCar = Convert.ToString(Console.ReadLine());
+//carlist.Add(givenCar);
+
+//Console.WriteLine("can you name a car company?");
+//var givenCar2 = Convert.ToString(Console.ReadLine());
+//carlist.Add(givenCar2);
+
+//Console.WriteLine("can you name a car company?");
+//var givenCar3 = Convert.ToString(Console.ReadLine());
+//carlist.Add(givenCar3);
+
+//Console.WriteLine("Your name is " + fullname + " and you are " + age + " years old.");
+//Console.WriteLine(carlist[0]);
+//Console.WriteLine(carlist[1]);
+//Console.WriteLine(carlist[1]);
+
+//Console.ReadLine();
+
+string fullname = AskForFullName();
+int age = AskForAge();
 
 List<string> carlist = new List<string>();
 
-Console.WriteLine("can you name a car company?");
-var givenCar = Convert.ToString(Console.ReadLine());
-carlist.Add(givenCar);
-
-Console.WriteLine("can you name a car company?");
-var givenCar2 = Convert.ToString(Console.ReadLine());
-carlist.Add(givenCar2);
-
-Console.WriteLine("can you name a car company?");
-var givenCar3 = Convert.ToString(Console.ReadLine());
-carlist.Add(givenCar3);
+carlist.Add(AskForCarCompany());
+carlist.Add(AskForCarCompany());
+carlist.Add(AskForCarCompany());
 
 Console.WriteLine("Your name is " + fullname + " and you are " + age + " years old.");
 Console.WriteLine(carlist[0]);
@@ -41,5 +59,24 @@ Console.WriteLine(carlist[1]);
 
 Console.ReadLine();
 
+static string AskForFullName()
+{
+    Console.WriteLine("What is your name?");
+    string fullname = Convert.ToString(Console.ReadLine());
+    return fullname;
+}
 
+static string AskForCarCompany()
+{
+    Console.WriteLine("can you name a car company?");
+    var givenCar = Convert.ToString(Console.ReadLine());
+    return givenCar;
 
+}
+
+static int AskForAge()
+{
+    Console.WriteLine("What is your age?");
+    int age = Convert.ToInt32(Console.ReadLine());
+    return age;
+}
