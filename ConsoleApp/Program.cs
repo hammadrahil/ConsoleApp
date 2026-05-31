@@ -121,11 +121,22 @@ public class Program
             if (foundPerson != null) 
             {
                 Console.WriteLine("Hello " + foundPerson.FullName + " nice to see you again. we know your age is:" + foundPerson.Age);
+                var carCompanyList = _context.CarCompanies.Where(x => x.PersonEntityID == foundPerson.PersonEntityID).ToList();
+                foreach (var carCompanyItem in carCompanyList) 
+                {
+                    Console.WriteLine("We also know you like " + carCompanyItem.CarCompanyName);
+                }
                 Console.WriteLine("Do You Still Want To Be In Our  Database? Y or N");
                 var givenRemoveAnswer = Convert.ToString(Console.ReadLine());
-                if (givenRemoveAnswer == "N") 
-                { 
+                if (givenRemoveAnswer == "N")
+                {
                     _context.PersonEntity.Remove(foundPerson);
+                    _context.SaveChanges();
+                }
+                else
+                {           
+                    foundPerson.Age = foundPerson.Age + 1;
+                    _context.PersonEntity.Update(foundPerson);
                     _context.SaveChanges();
                 }
 
@@ -145,7 +156,7 @@ public class Program
         person.AskForCarCompany();
         person.AskForCarCompany();
         person.AskForCarCompany();
-        person.SaveCarCompanyInDatabase(_context);
+        person.SaveCarCompanyInDatabase(_context, foundPerson);
         person.DisplayInfo();
     }
 

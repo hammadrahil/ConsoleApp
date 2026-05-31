@@ -43,14 +43,15 @@ namespace ConsoleApp
             CarList.Add(givenCar);
         }
 
-        public void SaveCarCompanyInDatabase(Context context)
+        public void SaveCarCompanyInDatabase(Context context, PersonEntity personEntity)
         {
             foreach (var carItem in CarList)
             {
                 context.CarCompanies.Add(new CarCompany()
                 {
                     CarID = Guid.NewGuid(),
-                    CarName = carItem
+                    CarCompanyName = carItem,
+                    PersonEntityID = personEntity.PersonEntityID
                 });
             }
             context.SaveChanges();
