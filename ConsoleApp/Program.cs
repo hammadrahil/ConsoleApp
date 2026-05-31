@@ -1,4 +1,8 @@
-﻿#nullable disable
+﻿using ConsoleApp;
+using Csharp.Entites;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+#nullable disable
 
 //String sometext = "Hello, World!";
 
@@ -43,7 +47,7 @@
 
 //Console.ReadLine();
 
-using ConsoleApp;
+
 
 //string fullname = AskForFullName();
 //int age = AskForAge();
@@ -82,13 +86,37 @@ using ConsoleApp;
 //return age;
 //}
 
-Person person = new Person();
+public class Program
+{
+    public static ServiceProvider ServiceProvider { get; set; }
 
-person.AskForFullName();
-person.AskForAge();
+    public static void Main(string[] args)
+    {
+        _registerServiceProvider();
 
-person.AskForCarCompany();
-person.AskForCarCompany();
-person.AskForCarCompany();
+        Person person = new Person();
 
-person.DisplayInfo(); 
+        person.AskForFullName();
+        person.AskForAge();
+
+        person.AskForCarCompany();
+        person.AskForCarCompany();
+        person.AskForCarCompany();
+
+        person.DisplayInfo();
+
+        private static void _registerServiceProvider()
+        {
+            IServiceCollection services = new ServiceCollection();
+            services.AddDbContext<Context>(options =>
+            {
+                options.UseSqlServer("Server=localhost;Database=CarCompanyDB;Trusted_Connection=True;");
+            });
+
+            services.AddTransient<Context>();
+            
+            ServiceProvider = services.BuildServiceProvider();
+    }
+    }
+
+

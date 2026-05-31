@@ -12,6 +12,7 @@ namespace ConsoleApp
         public Person()
         {
             CarList = new List<string>();
+           // Program.Main(null);
         }
 
         public void AskForFullName()
