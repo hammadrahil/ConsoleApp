@@ -88,35 +88,31 @@ using Microsoft.Extensions.DependencyInjection;
 
 public class Program
 {
-    public static ServiceProvider ServiceProvider { get; set; }
+    public static ServiceProvider ServiceProvider { get; set; } = default!;
 
     public static void Main(string[] args)
     {
         _registerServiceProvider();
 
-        Person person = new Person();
+        //var personfulName = Person.FullName();
+        //var connectionString = ContextFactory.ConnectionString;
 
+        Person person = new Person();
+        //var fullName = person.FullName();
         person.AskForFullName();
         person.AskForAge();
-
         person.AskForCarCompany();
         person.AskForCarCompany();
         person.AskForCarCompany();
-
         person.DisplayInfo();
-
-        private static void _registerServiceProvider()
-        {
-            IServiceCollection services = new ServiceCollection();
-            services.AddDbContext<Context>(options =>
-            {
-                options.UseSqlServer("Server=localhost;Database=CarCompanyDB;Trusted_Connection=True;");
-            });
-
-            services.AddTransient<Context>();
-            
-            ServiceProvider = services.BuildServiceProvider();
-    }
     }
 
-
+    private static void _registerServiceProvider()
+    {
+        IServiceCollection services = new ServiceCollection();
+        services.AddDbContext<Context>(options => options.UseMySql(ContextFactory.ConnectionString,
+            ServerVersion.AutoDetect(ContextFactory.ConnectionString)));
+        services.AddTransient<Context>();
+        ServiceProvider = services.BuildServiceProvider();
+    }
+}
