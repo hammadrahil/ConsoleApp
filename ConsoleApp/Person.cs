@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Csharp.Entites;
+using Csharp.Entites.Model;
+using System;
 using System.Collections.Generic;
 
 namespace ConsoleApp
@@ -15,6 +17,17 @@ namespace ConsoleApp
            // Program.Main(null);
         }
 
+        public PersonEntity AskForUserName(Context context)
+        {
+           Console.WriteLine("What is your name?");
+           string givenName = Console.ReadLine() ?? string.Empty;
+
+            var foundPerson = context.PersonEntity.FirstOrDefault(x => x.FullName == givenName);
+            FullName = foundPerson.FullName;
+            Age = foundPerson.Age;
+            return foundPerson;
+        }
+
         public void AskForFullName()
         {
             Console.WriteLine("What is your name?");
@@ -28,6 +41,32 @@ namespace ConsoleApp
             var givenCar = Console.ReadLine() ?? string.Empty;
 
             CarList.Add(givenCar);
+        }
+
+        public void SaveCarCompanyInDatabase(Context context)
+        {
+            foreach (var carItem in CarList)
+            {
+                context.CarCompanies.Add(new CarCompany()
+                {
+                    CarID = Guid.NewGuid(),
+                    CarName = carItem
+                });
+            }
+            context.SaveChanges();
+        }
+
+        public PersonEntity SavePersonInDatabase(Context Context)
+        {
+            var newPersonEntity = new Csharp.Entites.Model.PersonEntity()
+            {
+                PersonEntityID = Guid.NewGuid(),
+                FullName = FullName,
+                Age = Age
+            };
+            Context.PersonEntity.Add(newPersonEntity);
+            Context.SaveChanges();
+            return newPersonEntity;
         }
 
         public void AskForAge()

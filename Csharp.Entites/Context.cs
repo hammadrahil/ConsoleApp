@@ -11,5 +11,6 @@ namespace Csharp.Entites
 
         public DbSet<FoodCompany> FoodCompany { get; set; } = default!;
 
-    }
+        public DbSet<PersonEntity> PersonEntity { get; set; } = default!;
+     }
 }
