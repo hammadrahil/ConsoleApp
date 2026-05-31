@@ -265,9 +265,8 @@ Instructor: Jordan Smith | Completed: June 1, 2026
 **Muhammad Hammad**  
 WordPress & Shopify Developer | Learning C# & .NET Backend Development
 
-- 🌐 Portfolio: [hammads-portfolio.lovable.app](https://hammads-portfolio.lovable.app)
 - 💼 LinkedIn: [linkedin.com/in/hammadrahil](https://linkedin.com/in/hammadrahil)
-- 📧 Email: scorpian487@gmail.com
+- 📧 Email: hammadmen@gmail.com
 
 ---
 
