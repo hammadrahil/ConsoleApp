@@ -8,5 +8,8 @@ namespace Csharp.Entites
         public Context(DbContextOptions<Context> options) : base(options) { }
 
         public DbSet<CarCompany> CarCompanies { get; set; } = default!; 
+
+        public DbSet<FoodCompany> FoodCompany { get; set; } = default!;
+
     }
 }
